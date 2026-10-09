@@ -158,6 +158,11 @@ namespace TaskItemIndicator
                 {
                     _questLoot.Add(item);
                 }
+                else if (ShowStandaloneTaskItems && item.gameObject.activeInHierarchy
+                         && !_carriedTemplates.Contains(item.Item.StringTemplateId))
+                {
+                    _questLoot.Add(item);
+                }
             }
 
             if (_questLoot.Count != _loggedCount)
@@ -166,6 +171,8 @@ namespace TaskItemIndicator
                 Log?.Invoke("task items in this raid: " + _loggedCount);
             }
         }
+
+        public bool ShowStandaloneTaskItems { get; set; } = true;
 
         private readonly HashSet<string> _wantedTemplates = new HashSet<string>();
         private readonly HashSet<string> _carriedTemplates = new HashSet<string>();
