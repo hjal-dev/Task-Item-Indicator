@@ -45,7 +45,7 @@ namespace TaskItemIndicator
         {
             GameWorld world = Singleton<GameWorld>.Instance;
             Player player = world != null ? world.MainPlayer : null;
-            if (player == null)
+            if (player == null || world is HideoutGameWorld)
             {
                 Remove();
                 return;
@@ -295,7 +295,8 @@ namespace TaskItemIndicator
 
         private void CreateCorners()
         {
-            ActionPanel panel = Object.FindObjectOfType<ActionPanel>();
+            CommonUI commonUI = MonoBehaviourSingleton<CommonUI>.Instance;
+            ActionPanel panel = commonUI != null && commonUI.EftBattleUIScreen != null ? commonUI.EftBattleUIScreen.ActionPanel : null;
             if (panel == null || panel._pointer == null)
             {
                 return;

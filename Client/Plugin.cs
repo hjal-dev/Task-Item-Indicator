@@ -4,7 +4,7 @@ using BepInEx.Configuration;
 
 namespace TaskItemIndicator
 {
-    [BepInPlugin("com.hj.taskitemindicator", "Task Item Indicator", "1.0.1")]
+    [BepInPlugin("com.hj.taskitemindicator", "Task Item Indicator", "1.0.2")]
     public class Plugin : BaseUnityPlugin
     {
         private ConfigEntry<bool> _enabled;
